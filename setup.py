@@ -32,6 +32,7 @@ setup(
     ],
     tests_require=[
         'pytest>=7,<8',
+        'requests_mock>=1,<2',
     ], # TODO
     classifiers=[
         # TODO audit these. Add more?
