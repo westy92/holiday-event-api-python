@@ -1,12 +1,16 @@
 import requests
 
+
 class client:
     def __init__(self, apiKey: str):
         if not apiKey:
-            raise ValueError('Please provide a valid API key. Get one at https://apilayer.com/marketplace/checkiday-api#pricing.')
+            raise ValueError(
+                'Please provide a valid API key. Get one at ' +
+                'https://apilayer.com/marketplace/checkiday-api#pricing.')
         self.apiKey = apiKey
 
-    def getEvents(self, date: str = None, adult: bool = False, timezone: str = None):
+    def getEvents(self, date: str = None, adult: bool = False,
+                  timezone: str = None):
         params = {
             'adult': str(adult).lower(),
         }
@@ -23,9 +27,9 @@ class client:
         params = {
             'id': id,
         }
-        if start != None:
+        if start is not None:
             params['start'] = str(start)
-        if end != None:
+        if end is not None:
             params['end'] = str(end)
 
         return self.__request('event', params)
@@ -41,10 +45,11 @@ class client:
         return self.__request('search', params)
 
     def __request(self, path, parameters):
-        baseUrl = "https://api.apilayer.com/checkiday/" # TODO class const
+        baseUrl = 'https://api.apilayer.com/checkiday/'  # TODO class const
         headers = {
             'apikey': self.apiKey,
-            'User-Agent': "HolidayApiPython/0.0.1" # TODO class const, build from version somewhere?
+            # TODO class const, build from version somewhere?
+            'User-Agent': 'HolidayApiPython/0.0.1',
         }
         url = baseUrl + path
 
@@ -54,8 +59,10 @@ class client:
             response = requests.get(url, params=parameters, headers=headers)
             data = response.json()
             data['rateLimit'] = {
-                'limitMonth': int(response.headers.get('X-RateLimit-Limit-Month', '0')),
-                'remainingMonth': int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
+                'limitMonth': int(response.headers.get(
+                    'X-RateLimit-Limit-Month', '0')),
+                'remainingMonth': int(response.headers.get(
+                    'X-RateLimit-Remaining-Month', '0')),
             }
         except Exception:
             if response is None:

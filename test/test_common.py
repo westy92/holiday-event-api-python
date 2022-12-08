@@ -2,6 +2,7 @@ import requests
 import holidays
 import pytest
 
+
 def test_sends_api_key(requests_mock):
     client = holidays.client('abc123')
     requests_mock.get(
@@ -12,6 +13,7 @@ def test_sends_api_key(requests_mock):
     client.getEvents()
     assert requests_mock.called
 
+
 def test_sends_user_agent(requests_mock):
     client = holidays.client('abc123')
     requests_mock.get(
@@ -21,6 +23,7 @@ def test_sends_user_agent(requests_mock):
     )
     client.getEvents()
     assert requests_mock.called
+
 
 def test_passes_along_error(requests_mock):
     requests_mock.get(
@@ -34,6 +37,7 @@ def test_passes_along_error(requests_mock):
     assert 'MyError!' == str(e.value)
     assert requests_mock.called
 
+
 def test_server_error_500(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
@@ -46,6 +50,7 @@ def test_server_error_500(requests_mock):
     assert '500' == str(e.value)
     assert requests_mock.called
 
+
 def test_server_error(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
@@ -57,6 +62,7 @@ def test_server_error(requests_mock):
     assert 'Unable to process request.' == str(e.value)
     assert requests_mock.called
 
+
 def test_server_error_malformed_response(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
@@ -67,6 +73,7 @@ def test_server_error_malformed_response(requests_mock):
         client.getEvents()
     assert 'Unable to parse response.' == str(e.value)
     assert requests_mock.called
+
 
 def test_follows_redirects(requests_mock):
     client = holidays.client('abc123')
@@ -82,6 +89,7 @@ def test_follows_redirects(requests_mock):
     )
     client.getEvents()
     assert requests_mock.called
+
 
 def test_reports_rate_limits(requests_mock):
     client = holidays.client('abc123')

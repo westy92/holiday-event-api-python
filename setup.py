@@ -6,7 +6,8 @@ REQUIRED_PYTHON = (3, 7)
 
 # TODO test on 3.5 or 2.7
 if CURRENT_PYTHON < REQUIRED_PYTHON:
-    sys.stderr.write('holiday-event-api requires Python version {}.{} or higher.'
+    sys.stderr.write(
+        'holiday-event-api requires Python version {}.{} or higher.'
         .format(*(CURRENT_PYTHON)))
     sys.exit(1)
 
@@ -23,7 +24,7 @@ setup(
     author='Seth Westphal',
     author_email='seth@sethwestphal.com',
     maintainer='Seth Westphal',
-    keywords=['python','holiday','api'], # TODO
+    keywords=['python', 'holiday', 'api'],  # TODO
     license='MIT',
     packages=['holidays'],
     python_requires='>=3.7, <4',
@@ -32,11 +33,11 @@ setup(
     ],
     classifiers=[
         # TODO audit these. Add more?
-        #'Development Status :: 5 - Production/Stable',
-        #'Development Status :: 6 - Mature',
+        # 'Development Status :: 5 - Production/Stable',
+        # 'Development Status :: 6 - Mature',
         'Intended Audience :: Developers',
         'Natural Language :: English',
-        #'License :: OSI Approved :: BSD License',
+        # 'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
@@ -45,8 +46,8 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
-        #'Programming Language :: Python :: Implementation :: CPython',
-        #'Programming Language :: Python :: Implementation :: PyPy',
+        # 'Programming Language :: Python :: Implementation :: CPython',
+        # 'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development :: Libraries :: Python Modules',
         # 'Topic :: Utilities',
     ],
