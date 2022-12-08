@@ -4,13 +4,10 @@ import requests
 class client:
     def __init__(self, apiKey: str):
         if not apiKey:
-            raise ValueError(
-                'Please provide a valid API key. Get one at ' +
-                'https://apilayer.com/marketplace/checkiday-api#pricing.')
+            raise ValueError('Please provide a valid API key. Get one at https://apilayer.com/marketplace/checkiday-api#pricing.')
         self.apiKey = apiKey
 
-    def getEvents(self, date: str = None, adult: bool = False,
-                  timezone: str = None):
+    def getEvents(self, date: str = None, adult: bool = False, timezone: str = None):
         params = {
             'adult': str(adult).lower(),
         }
@@ -59,10 +56,8 @@ class client:
             response = requests.get(url, params=parameters, headers=headers)
             data = response.json()
             data['rateLimit'] = {
-                'limitMonth': int(response.headers.get(
-                    'X-RateLimit-Limit-Month', '0')),
-                'remainingMonth': int(response.headers.get(
-                    'X-RateLimit-Remaining-Month', '0')),
+                'limitMonth': int(response.headers.get('X-RateLimit-Limit-Month', '0')),
+                'remainingMonth': int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
             }
         except Exception:
             if response is None:
