@@ -30,10 +30,6 @@ setup(
     install_requires=[
         'requests>=2, <3',
     ],
-    tests_require=[
-        'pytest>=7,<8',
-        'requests_mock>=1,<2',
-    ], # TODO
     classifiers=[
         # TODO audit these. Add more?
         #'Development Status :: 5 - Production/Stable',
