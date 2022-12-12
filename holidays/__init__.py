@@ -1,3 +1,4 @@
+from http.client import responses
 import requests
 
 
@@ -66,7 +67,6 @@ class client:
                 raise RuntimeError('Unable to parse response.')
 
         if not response.ok:
-            # TODO response.reason https://github.com/psf/requests/issues/6303
-            raise RuntimeError(data.get('error', response.status_code))
+            raise RuntimeError(getattr(data, 'error', responses.get(response.status_code, response.status_code)))
 
         return data

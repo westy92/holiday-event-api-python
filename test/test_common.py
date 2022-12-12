@@ -47,7 +47,20 @@ def test_server_error_500(requests_mock):
     client = holidays.client('abc123')
     with pytest.raises(RuntimeError) as e:
         client.getEvents()
-    assert '500' == str(e.value)
+    assert 'Internal Server Error' == str(e.value)
+    assert requests_mock.called
+
+
+def test_server_error_unknown(requests_mock):
+    requests_mock.get(
+        'https://api.apilayer.com/checkiday/events',
+        json={},
+        status_code=599
+    )
+    client = holidays.client('abc123')
+    with pytest.raises(RuntimeError) as e:
+        client.getEvents()
+    assert '599' == str(e.value)
     assert requests_mock.called
 
 

@@ -11,7 +11,6 @@ def test_get_events_with_default_parameters(requests_mock):
     client = holidays.client('abc123')
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
-        request_headers={'apikey': 'abc123'},
         text=default,
     )
     result = client.getEvents()
@@ -33,7 +32,6 @@ def test_get_events_with_set_parameters(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events'
         + '?adult=true&timezone=America/New_York&date=7/16/1992',
-        request_headers={'apikey': 'abc123'},
         text=parameters,
     )
     result = client.getEvents(
