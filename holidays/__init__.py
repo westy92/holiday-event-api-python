@@ -1,4 +1,5 @@
 from http.client import responses
+from types import SimpleNamespace
 import requests
 
 
@@ -55,11 +56,11 @@ class client:
         response = None
         try:
             response = requests.get(url, params=parameters, headers=headers)
-            data = response.json()
-            data['rateLimit'] = {
-                'limitMonth': int(response.headers.get('X-RateLimit-Limit-Month', '0')),
-                'remainingMonth': int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
-            }
+            data = response.json(object_hook=lambda d: SimpleNamespace(**d))
+            data.rateLimit = SimpleNamespace(
+                limitMonth=int(response.headers.get('X-RateLimit-Limit-Month', '0')),
+                remainingMonth=int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
+            )
         except Exception:
             if response is None:
                 raise RuntimeError('Unable to process request.')

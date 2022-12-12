@@ -1,3 +1,4 @@
+from types import SimpleNamespace
 import pytest
 import holidays
 
@@ -16,8 +17,8 @@ def test_get_event_info_with_default_parameters(requests_mock):
     )
     result = client.getEventInfo(id='f90b893ea04939d7456f30c54f68d7b4')
     assert requests_mock.called
-    assert result['event']['id'] == 'f90b893ea04939d7456f30c54f68d7b4'
-    assert len(result['event']['hashtags']) == 2
+    assert result.event.id == 'f90b893ea04939d7456f30c54f68d7b4'
+    assert len(result.event.hashtags) == 2
 
 
 def test_get_event_info_with_set_parameters(requests_mock):
@@ -28,11 +29,11 @@ def test_get_event_info_with_set_parameters(requests_mock):
     )
     result = client.getEventInfo(id='f90b893ea04939d7456f30c54f68d7b4', start=2002, end=2003)
     assert requests_mock.called
-    assert len(result['event']['occurrences']) == 2
-    assert result['event']['occurrences'][0] == {
-        'date': '08/08/2002',
-        'length': 1,
-    }
+    assert len(result.event.occurrences) == 2
+    assert result.event.occurrences[0] == SimpleNamespace(
+        date='08/08/2002',
+        length=1,
+    )
 
 
 def test_get_event_info_invalid_event(requests_mock):

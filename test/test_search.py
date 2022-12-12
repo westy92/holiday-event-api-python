@@ -1,3 +1,4 @@
+from types import SimpleNamespace
 import pytest
 import holidays
 
@@ -16,13 +17,13 @@ def test_search_with_default_parameters(requests_mock):
     )
     result = client.search('zucchini')
     assert requests_mock.called
-    assert result['adult'] is False
-    assert len(result['events']) == 3
-    assert result['events'][0] == {
-        'id': 'cc81cbd8730098456f85f69798cbc867',
-        'name': 'National Zucchini Bread Day',
-        'url': 'https://www.checkiday.com/cc81cbd8730098456f85f69798cbc867/national-zucchini-bread-day',
-    }
+    assert result.adult is False
+    assert len(result.events) == 3
+    assert result.events[0] == SimpleNamespace(
+        id='cc81cbd8730098456f85f69798cbc867',
+        name='National Zucchini Bread Day',
+        url='https://www.checkiday.com/cc81cbd8730098456f85f69798cbc867/national-zucchini-bread-day',
+    )
 
 
 def test_search_with_set_parameters(requests_mock):
@@ -33,14 +34,14 @@ def test_search_with_set_parameters(requests_mock):
     )
     result = client.search('porch day', adult=True)
     assert requests_mock.called
-    assert result['adult'] is True
-    assert result['query'] == 'porch day'
-    assert len(result['events']) == 1
-    assert result['events'][0] == {
-        'id': '61363236f06e4eb8e4e14e5925c2503d',
-        'name': "Sneak Some Zucchini Onto Your Neighbor's Porch Day",
-        'url': 'https://www.checkiday.com/61363236f06e4eb8e4e14e5925c2503d/sneak-some-zucchini-onto-your-neighbors-porch-day',
-    }
+    assert result.adult is True
+    assert result.query == 'porch day'
+    assert len(result.events) == 1
+    assert result.events[0] == SimpleNamespace(
+        id='61363236f06e4eb8e4e14e5925c2503d',
+        name="Sneak Some Zucchini Onto Your Neighbor's Porch Day",
+        url='https://www.checkiday.com/61363236f06e4eb8e4e14e5925c2503d/sneak-some-zucchini-onto-your-neighbors-porch-day',
+    )
 
 
 def test_search_query_too_short(requests_mock):

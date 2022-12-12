@@ -116,5 +116,5 @@ def test_reports_rate_limits(requests_mock):
     )
     response = client.getEvents()
     assert requests_mock.called
-    assert response['rateLimit']['limitMonth'] == 456
-    assert response['rateLimit']['remainingMonth'] == 123
+    assert response.rateLimit.limitMonth == 456
+    assert response.rateLimit.remainingMonth == 123
