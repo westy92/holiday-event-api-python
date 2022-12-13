@@ -1,6 +1,7 @@
 from http.client import responses
-from types import SimpleNamespace
+import marshmallow_dataclass
 import requests
+from holidays.types import GetEventInfoResponse, GetEventsResponse, SearchResponse
 
 
 class client:
@@ -18,7 +19,7 @@ class client:
         if timezone:
             params['timezone'] = timezone
 
-        return self.__request('events', params)
+        return self.__request('events', params, GetEventsResponse)
 
     def getEventInfo(self, id: str, start: int = None, end: int = None):
         if not id:
@@ -31,7 +32,7 @@ class client:
         if end is not None:
             params['end'] = str(end)
 
-        return self.__request('event', params)
+        return self.__request('event', params, GetEventInfoResponse)
 
     def search(self, query: str, adult: bool = False):
         if not query:
@@ -41,9 +42,9 @@ class client:
             'adult': str(adult).lower(),
         }
 
-        return self.__request('search', params)
+        return self.__request('search', params, SearchResponse)
 
-    def __request(self, path, parameters):
+    def __request(self, path, parameters, resultClass):
         baseUrl = 'https://api.apilayer.com/checkiday/'  # TODO class const
         headers = {
             'apikey': self.apiKey,
@@ -56,11 +57,11 @@ class client:
         response = None
         try:
             response = requests.get(url, params=parameters, headers=headers)
-            data = response.json(object_hook=lambda d: SimpleNamespace(**d))
-            data.rateLimit = SimpleNamespace(
-                limitMonth=int(response.headers.get('X-RateLimit-Limit-Month', '0')),
-                remainingMonth=int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
-            )
+            data = response.json()
+            data['rateLimit'] = {
+                'limitMonth': int(response.headers.get('X-RateLimit-Limit-Month', '0')),
+                'remainingMonth': int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
+            }
         except Exception:
             if response is None:
                 raise RuntimeError('Unable to process request.')
@@ -68,6 +69,7 @@ class client:
                 raise RuntimeError('Unable to parse response.')
 
         if not response.ok:
-            raise RuntimeError(getattr(data, 'error', responses.get(response.status_code, response.status_code)))
+            raise RuntimeError(data.get('error', responses.get(response.status_code, response.status_code)))
 
-        return data
+        schema = marshmallow_dataclass.class_schema(resultClass)()
+        return schema.load(data)

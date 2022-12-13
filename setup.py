@@ -30,6 +30,7 @@ setup(
     python_requires='>=3.7, <4',
     install_requires=[
         'requests>=2, <3',
+        'marshmallow_dataclass>=8',
     ],
     classifiers=[
         # TODO audit these. Add more?

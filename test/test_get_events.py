@@ -1,5 +1,5 @@
-from types import SimpleNamespace
 import holidays
+from holidays.types import EventSummary
 
 
 with open('test/responses/getEvents-default.json', 'r') as f:
@@ -21,7 +21,7 @@ def test_get_events_with_default_parameters(requests_mock):
     assert len(result.events) == 2
     assert len(result.multiday_starting) == 1
     assert len(result.multiday_ongoing) == 2
-    assert result.events[0] == SimpleNamespace(
+    assert result.events[0] == EventSummary(
         id='b80630ae75c35f34c0526173dd999cfc',
         name='Cinco de Mayo',
         url='https://www.checkiday.com/b80630ae75c35f34c0526173dd999cfc/cinco-de-mayo',
@@ -43,7 +43,7 @@ def test_get_events_with_set_parameters(requests_mock):
     assert len(result.events) == 2
     assert len(result.multiday_starting) == 0
     assert len(result.multiday_ongoing) == 1
-    assert result.events[0] == SimpleNamespace(
+    assert result.events[0] == EventSummary(
         id='6ebb6fd5e483de2fde33969a6c398472',
         name='Get to Know Your Customers Day',
         url='https://www.checkiday.com/6ebb6fd5e483de2fde33969a6c398472/get-to-know-your-customers-day',

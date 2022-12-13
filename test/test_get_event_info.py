@@ -1,6 +1,6 @@
-from types import SimpleNamespace
 import pytest
 import holidays
+from holidays.types import Occurrence
 
 
 with open('test/responses/getEventInfo.json', 'r') as f:
@@ -30,7 +30,7 @@ def test_get_event_info_with_set_parameters(requests_mock):
     result = client.getEventInfo(id='f90b893ea04939d7456f30c54f68d7b4', start=2002, end=2003)
     assert requests_mock.called
     assert len(result.event.occurrences) == 2
-    assert result.event.occurrences[0] == SimpleNamespace(
+    assert result.event.occurrences[0] == Occurrence(
         date='08/08/2002',
         length=1,
     )

@@ -3,12 +3,16 @@ import holidays
 import pytest
 
 
+with open('test/responses/getEvents-default.json', 'r') as f:
+    default = f.read()
+
+
 def test_sends_api_key(requests_mock):
     client = holidays.client('abc123')
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
         request_headers={'apikey': 'abc123'},
-        json={},
+        text=default,
     )
     client.getEvents()
     assert requests_mock.called
@@ -19,7 +23,7 @@ def test_sends_user_agent(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
         request_headers={'user-agent': 'HolidayApiPython/0.0.1'},
-        json={},
+        text=default,
     )
     client.getEvents()
     assert requests_mock.called
@@ -98,7 +102,7 @@ def test_follows_redirects(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/redirected',
         status_code=200,
-        json={},
+        text=default,
     )
     client.getEvents()
     assert requests_mock.called
@@ -112,7 +116,7 @@ def test_reports_rate_limits(requests_mock):
             'X-RateLimit-Remaining-Month': '123',
             'X-RateLimit-Limit-Month': '456',
         },
-        json={},
+        text=default,
     )
     response = client.getEvents()
     assert requests_mock.called
