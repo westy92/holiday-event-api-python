@@ -60,6 +60,7 @@ class client:
 
         data = {}
         response = None
+        result = None
         try:
             response = requests.get(url, params=parameters, headers=headers)
             data = response.json()
@@ -67,6 +68,8 @@ class client:
                 'limitMonth': int(response.headers.get('X-RateLimit-Limit-Month', '0')),
                 'remainingMonth': int(response.headers.get('X-RateLimit-Remaining-Month', '0')),
             }
+            schema = marshmallow_dataclass.class_schema(resultClass)()
+            result = schema.load(data)
         except Exception:
             if response is None:
                 raise RuntimeError('Unable to process request.')
@@ -76,5 +79,4 @@ class client:
         if not response.ok:
             raise RuntimeError(data.get('error', responses.get(response.status_code, response.status_code)))
 
-        schema = marshmallow_dataclass.class_schema(resultClass)()
-        return schema.load(data)
+        return result
