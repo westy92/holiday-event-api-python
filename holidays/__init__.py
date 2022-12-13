@@ -5,12 +5,15 @@ from holidays.types import GetEventInfoResponse, GetEventsResponse, SearchRespon
 
 
 class client:
+    """The API Client"""
     def __init__(self, apiKey: str):
+        """Initializes an API client"""
         if not apiKey:
             raise ValueError('Please provide a valid API key. Get one at https://apilayer.com/marketplace/checkiday-api#pricing.')
         self.apiKey = apiKey
 
-    def getEvents(self, date: str = None, adult: bool = False, timezone: str = None):
+    def getEvents(self, date: str = None, adult: bool = False, timezone: str = None) -> GetEventsResponse:
+        """Gets the Events for the provided Date"""
         params = {
             'adult': str(adult).lower(),
         }
@@ -21,7 +24,8 @@ class client:
 
         return self.__request('events', params, GetEventsResponse)
 
-    def getEventInfo(self, id: str, start: int = None, end: int = None):
+    def getEventInfo(self, id: str, start: int = None, end: int = None) -> GetEventInfoResponse:
+        """Gets the Event Info for the provided Event"""
         if not id:
             raise ValueError('Event id is required.')
         params = {
@@ -34,7 +38,8 @@ class client:
 
         return self.__request('event', params, GetEventInfoResponse)
 
-    def search(self, query: str, adult: bool = False):
+    def search(self, query: str, adult: bool = False) -> SearchResponse:
+        """Searches for Events with the given criteria"""
         if not query:
             raise ValueError('Search query is required.')
         params = {
