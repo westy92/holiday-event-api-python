@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass
@@ -59,15 +59,15 @@ class EventSummary:
 class EventInfo(EventSummary):
     """TODO."""
     adult: bool
-    alternate_names: list[AlternateName]
-    hashtags: Optional[list[str]]
+    alternate_names: List[AlternateName]
+    hashtags: Optional[List[str]]
     image: Optional[ImageInfo]
-    sources: Optional[list[str]]
+    sources: Optional[List[str]]
     description: Optional[RichText]
     how_to_observe: Optional[RichText]
-    patterns: Optional[list[Pattern]]
-    occurrences: Optional[list[Occurrence]]
-    founders: Optional[list[FounderInfo]]
+    patterns: Optional[List[Pattern]]
+    occurrences: Optional[List[Occurrence]]
+    founders: Optional[List[FounderInfo]]
 
 
 @dataclass
@@ -90,9 +90,9 @@ class GetEventsResponse(StandardResponse):
     date: str
     timezone: str
     """TODO 2"""
-    events: list[EventSummary]
-    multiday_starting: Optional[list[EventSummary]]
-    multiday_ongoing: Optional[list[EventSummary]]
+    events: List[EventSummary]
+    multiday_starting: Optional[List[EventSummary]]
+    multiday_ongoing: Optional[List[EventSummary]]
 
 
 @dataclass
@@ -107,4 +107,4 @@ class SearchResponse(StandardResponse):
     query: str
     """TODO 2"""
     adult: bool
-    events: list[EventSummary]
+    events: List[EventSummary]
