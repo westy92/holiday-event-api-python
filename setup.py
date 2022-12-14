@@ -15,7 +15,7 @@ with open('README.md', 'r') as f:
 
 setup(
     name='holiday-event-api',
-    version='1.0.0',
+    version='1.0.1',
     description='The Official Holiday and Event API for Python',
     long_description_content_type='text/markdown',
     long_description=readme,

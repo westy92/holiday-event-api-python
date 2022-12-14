@@ -6,6 +6,10 @@ from holidays.types import GetEventInfoResponse, GetEventsResponse, SearchRespon
 
 class client:
     """The API Client"""
+
+    version = '1.0.1'
+    """The library version"""
+
     def __init__(self, apiKey: str):
         """Initializes an API client"""
         if not apiKey:
@@ -50,11 +54,10 @@ class client:
         return self.__request('search', params, SearchResponse)
 
     def __request(self, path, parameters, resultClass):
-        baseUrl = 'https://api.apilayer.com/checkiday/'  # TODO class const
+        baseUrl = 'https://api.apilayer.com/checkiday/'
         headers = {
             'apikey': self.apiKey,
-            # TODO class const, build from version somewhere?
-            'User-Agent': 'HolidayApiPython/1.0.0',
+            'User-Agent': f'HolidayApiPython/{self.version}',
         }
         url = baseUrl + path
 

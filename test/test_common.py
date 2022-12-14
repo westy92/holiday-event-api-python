@@ -22,7 +22,7 @@ def test_sends_user_agent(requests_mock):
     client = holidays.client('abc123')
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
-        request_headers={'user-agent': 'HolidayApiPython/1.0.0'},
+        request_headers={'user-agent': f'HolidayApiPython/{client.version}'},
         text=default,
     )
     client.getEvents()
