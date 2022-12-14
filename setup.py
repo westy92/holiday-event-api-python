@@ -4,7 +4,6 @@ from setuptools import setup
 CURRENT_PYTHON = sys.version_info[:2]
 REQUIRED_PYTHON = (3, 7)
 
-# TODO test on 3.5 or 2.7
 if CURRENT_PYTHON < REQUIRED_PYTHON:
     sys.stderr.write(
         'holiday-event-api requires Python version {}.{} or higher.'
@@ -24,7 +23,37 @@ setup(
     author='Seth Westphal',
     author_email='seth@sethwestphal.com',
     maintainer='Seth Westphal',
-    keywords=['python', 'holiday', 'api'],  # TODO
+    keywords=[
+        'python',
+        'holiday',
+        'holidays',
+        'public',
+        'federal',
+        'official',
+        'unofficial',
+        'date',
+        'month',
+        'year',
+        'day',
+        'calendar',
+        'api',
+        'holidayapi',
+        'list',
+        'event',
+        'occurrence',
+        'celebration',
+        'description',
+        'details',
+        'checkiday',
+        'international',
+        'national',
+        'world',
+        'popular',
+        'trusted',
+        'accurate',
+        'free',
+        'best',
+    ],
     license='MIT',
     packages=['holidays'],
     python_requires='>=3.7, <4',
@@ -33,23 +62,24 @@ setup(
         'marshmallow_dataclass>=8',
     ],
     classifiers=[
-        # TODO audit these. Add more?
-        # 'Development Status :: 5 - Production/Stable',
-        # 'Development Status :: 6 - Mature',
+        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 6 - Mature',
         'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        # 'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
-        # 'Programming Language :: Python :: Implementation :: CPython',
+        'Programming Language :: Python :: 3',
         'Programming Language :: Python :: Implementation :: PyPy',
+        'Programming Language :: Python',
+        'Topic :: Education',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary'
         'Topic :: Software Development :: Libraries :: Python Modules',
-        # 'Topic :: Utilities',
+        'Topic :: Utilities',
+        'Typing :: Typed',
     ],
 )
