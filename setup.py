@@ -15,16 +15,16 @@ with open('README.md', 'r') as f:
 
 setup(
     name='holiday-event-api',
-    version='0.0.2',
+    version='1.0.0',
     description='The Official Holiday and Event API for Python',
     long_description_content_type='text/markdown',
     long_description=readme,
     url='https://pypi.org/project/holiday-event-api/',
     repository='https://pypi.org/project/holiday-event-api/',
-    documentation='https://pypi.org/project/holiday-event-api/',
     project_urls={
-        'Issues': 'https://github.com/westy92/holiday-event-api-python/issues',
+        'Documentation': 'https://pypi.org/project/holiday-event-api/',
         'Releases': 'https://github.com/westy92/holiday-event-api-python/releases',
+        'Issues': 'https://github.com/westy92/holiday-event-api-python/issues',
         'Funding': 'https://github.com/sponsors/westy92',
     },
     author='Seth Westphal',
