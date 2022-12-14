@@ -54,7 +54,7 @@ class client:
         headers = {
             'apikey': self.apiKey,
             # TODO class const, build from version somewhere?
-            'User-Agent': 'HolidayApiPython/0.0.1',
+            'User-Agent': 'HolidayApiPython/0.0.2',
         }
         url = baseUrl + path
 
