@@ -20,7 +20,6 @@ setup(
     long_description_content_type='text/markdown',
     long_description=readme,
     url='https://github.com/westy92/holiday-event-api-python',
-    repository='https://github.com/westy92/holiday-event-api-python',
     project_urls={
         'Documentation': 'https://github.com/westy92/holiday-event-api-python',
         'Releases': 'https://github.com/westy92/holiday-event-api-python/releases',
