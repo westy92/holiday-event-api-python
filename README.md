@@ -1,7 +1,7 @@
 # The Official Holiday and Event API for Python
 
 [![PyPI](https://img.shields.io/pypi/v/holiday-event-api)](https://pypi.org/project/holiday-event-api)
-[![Supported Versions](https://img.shields.io/pypi/westy92/holiday-event-api.svg)](https://pypi.org/project/holiday-event-api)
+[![Supported Versions](https://img.shields.io/pypi/pyversions/holiday-event-api.svg)](https://pypi.org/project/holiday-event-api)
 [![Build Status](https://github.com/westy92/holiday-event-api-python/actions/workflows/github-actions.yml/badge.svg)](https://github.com/westy92/holiday-event-api-python/actions)
 [![Code Coverage](https://codecov.io/gh/westy92/holiday-event-api-python/branch/main/graph/badge.svg)](https://codecov.io/gh/westy92/holiday-event-api-python)
 [![Known Vulnerabilities](https://snyk.io/test/github/westy92/holiday-event-api-python/badge.svg)](https://snyk.io/test/github/westy92/holiday-event-api-python)
