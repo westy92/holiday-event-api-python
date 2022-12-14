@@ -19,10 +19,10 @@ setup(
     description='The Official Holiday and Event API for Python',
     long_description_content_type='text/markdown',
     long_description=readme,
-    url='https://pypi.org/project/holiday-event-api/',
-    repository='https://pypi.org/project/holiday-event-api/',
+    url='https://github.com/westy92/holiday-event-api-python',
+    repository='https://github.com/westy92/holiday-event-api-python',
     project_urls={
-        'Documentation': 'https://pypi.org/project/holiday-event-api/',
+        'Documentation': 'https://github.com/westy92/holiday-event-api-python',
         'Releases': 'https://github.com/westy92/holiday-event-api-python/releases',
         'Issues': 'https://github.com/westy92/holiday-event-api-python/issues',
         'Funding': 'https://github.com/sponsors/westy92',
