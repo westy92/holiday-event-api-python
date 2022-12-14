@@ -20,6 +20,13 @@ setup(
     long_description_content_type='text/markdown',
     long_description=readme,
     url='https://pypi.org/project/holiday-event-api/',
+    repository='https://pypi.org/project/holiday-event-api/',
+    documentation='https://pypi.org/project/holiday-event-api/',
+    project_urls={
+        'Issues': 'https://github.com/westy92/holiday-event-api-python/issues',
+        'Releases': 'https://github.com/westy92/holiday-event-api-python/releases',
+        'Funding': 'https://github.com/sponsors/westy92',
+    },
     author='Seth Westphal',
     author_email='seth@sethwestphal.com',
     maintainer='Seth Westphal',
