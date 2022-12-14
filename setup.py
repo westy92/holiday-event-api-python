@@ -78,7 +78,7 @@ setup(
         'Programming Language :: Python :: Implementation :: PyPy',
         'Programming Language :: Python',
         'Topic :: Education',
-        'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary'
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities',
         'Typing :: Typed',
