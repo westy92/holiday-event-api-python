@@ -55,6 +55,7 @@ setup(
         'best',
     ],
     license='MIT',
+    license_file='LICENSE',
     packages=['holidays'],
     python_requires='>=3.7, <4',
     install_requires=[
