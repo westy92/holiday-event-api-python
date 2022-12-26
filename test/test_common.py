@@ -1,3 +1,4 @@
+import platform
 import requests
 import holidays
 import pytest
@@ -23,6 +24,17 @@ def test_sends_user_agent(requests_mock):
     requests_mock.get(
         'https://api.apilayer.com/checkiday/events',
         request_headers={'user-agent': f'HolidayApiPython/{client.version}'},
+        text=default,
+    )
+    client.getEvents()
+    assert requests_mock.called
+
+
+def test_sends_platform_version(requests_mock):
+    client = holidays.client('abc123')
+    requests_mock.get(
+        'https://api.apilayer.com/checkiday/events',
+        request_headers={'x-platform-version': platform.python_version()},
         text=default,
     )
     client.getEvents()

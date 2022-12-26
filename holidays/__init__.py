@@ -1,4 +1,5 @@
 from http.client import responses
+import platform
 import marshmallow_dataclass
 import requests
 from holidays.types import GetEventInfoResponse, GetEventsResponse, SearchResponse
@@ -58,6 +59,7 @@ class client:
         headers = {
             'apikey': self.apiKey,
             'User-Agent': f'HolidayApiPython/{self.version}',
+            'X-Platform-Version': platform.python_version(),
         }
         url = baseUrl + path
 
