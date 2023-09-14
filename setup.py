@@ -2,7 +2,7 @@ import sys
 from setuptools import setup
 
 CURRENT_PYTHON = sys.version_info[:2]
-REQUIRED_PYTHON = (3, 7)
+REQUIRED_PYTHON = (3, 8)
 
 if CURRENT_PYTHON < REQUIRED_PYTHON:
     sys.stderr.write(
@@ -63,7 +63,7 @@ setup(
     license='MIT',
     license_file='LICENSE',
     packages=['holidays'],
-    python_requires='>=3.7, <4',
+    python_requires='>=3.8, <4',
     install_requires=[
         'requests>=2, <3',
         'marshmallow_dataclass>=8',
@@ -77,7 +77,6 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
-        'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3',

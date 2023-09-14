@@ -10,7 +10,7 @@
 Industry-leading Holiday and Event API for Python. Over 5,000 holidays and thousands of descriptions. Trusted by the World’s leading companies. Built by developers for developers since 2011.
 
 ## Supported Python Versions
-Latest version of the the Holiday and Event API supports all actively-maintained Python [releases](https://devguide.python.org/versions/) and might work with older versions. It also supports PyPy versions `3.7`, `3.8`, and `3.9`.
+Latest version of the the Holiday and Event API supports all actively-maintained Python [releases](https://devguide.python.org/versions/) and might work with older versions. It also supports PyPy.
 
 ## Authentication
 
